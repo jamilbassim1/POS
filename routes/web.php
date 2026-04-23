@@ -11,9 +11,8 @@ use App\Http\Controllers\Define\ProductController;
 use App\Http\Controllers\Define\CategoryController;
 use App\Http\Controllers\Define\CompanyController;
 
-Route::get('/', function () {
-    return "Laravel is working";
-});
+Route::view('/', 'welcome');
+
 
 // Auth routes (from Laravel UI)
 Auth::routes();
