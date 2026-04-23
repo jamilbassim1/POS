@@ -9,9 +9,9 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function defineproduct()
+    public function defineProduct()
     {
-        return view ('define.product');
+        return view('define.product');
     }
 
  public function store(Request $request)
