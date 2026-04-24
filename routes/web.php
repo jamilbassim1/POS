@@ -45,3 +45,4 @@ Route::get('/companies/list', [CompanyController::class, 'list']);
 
 
 Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
+Route::get('/products/index', [ProductController::class, 'index'])->name('products.index');

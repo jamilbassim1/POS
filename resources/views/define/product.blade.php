@@ -25,7 +25,13 @@
             <!-- / Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
 
-    <h4 class="fw-bold py-3 mb-4">Create Product</h4>
+ <div class="d-flex justify-content-between align-items-center">
+        <h4 class="fw-bold py-3 mb-4">Create Product</h4>
+
+        <a href="{{ route('products.index') }}" class="btn btn-primary">
+            See Products
+        </a>
+    </div>    
 
     <div class="card">
         <div class="card-body">
