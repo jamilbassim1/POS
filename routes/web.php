@@ -13,6 +13,7 @@ use App\Http\Controllers\Define\CompanyController;
 
 Route::view('/', 'welcome');
 
+
 // Auth routes (from Laravel UI)
 Auth::routes();
 
