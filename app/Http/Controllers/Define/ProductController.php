@@ -131,4 +131,38 @@ public function index()
 $products = Product::with('category')->latest()->get();
     return view('define.productindex', compact('products'));
 }
+public function update(Request $request, $barcode)
+{
+    $product = Product::where('barcode', $barcode)->firstOrFail();
+
+    $request->validate([
+        'name' => 'required',
+        'sale_rate' => 'required|numeric',
+        'purchase_rate' => 'required|numeric',
+    ]);
+
+    if ($request->sale_rate <= $request->purchase_rate) {
+        return response()->json(['error' => 'Sale must be greater than purchase'], 422);
+    }
+
+    $roi = (($request->sale_rate - $request->purchase_rate) / $request->purchase_rate) * 100;
+
+    $product->update([
+        'name' => $request->name,
+        'sale_rate' => $request->sale_rate,
+        'purchase_rate' => $request->purchase_rate,
+        'roi' => round($roi, 2),
+    ]);
+
+    return response()->json(['success' => true]);
+}
+public function destroy($barcode)
+{
+    $product = Product::where('barcode', $barcode)->firstOrFail();
+    $product->delete();
+
+    return response()->json(['success' => true]);
+}
+
+
 }
